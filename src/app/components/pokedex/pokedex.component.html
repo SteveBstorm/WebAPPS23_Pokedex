@@ -1,0 +1,38 @@
+<div class="main">
+  <div class="liste">
+    <h2>Pokedex</h2>
+    <div *ngIf="pokedex">
+      <p-button *ngIf="pokedex.previous" (click)="loadPokedex(pokedex.previous)">Précédent</p-button>
+      <p-button *ngIf="pokedex.next" (click)="loadPokedex(pokedex.next)">Suivant</p-button>
+      <p-table [value]="pokedex.results">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Nom du pokémon</th>
+            <th>Action</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-pokemon>
+          <tr>
+            <td>{{pokemon.name}}</td>
+            <td><p-button
+                styleClass="p-button-raised p-button-text p-button-help p-button-rounded p-button-sm"
+                icon="pi pi-plus"
+                (click)="showDetail(pokemon.url)" label="nouvelle page"></p-button>
+                <p-button
+                styleClass="p-button-raised p-button-text p-button-help p-button-rounded p-button-sm"
+                icon="pi pi-plus"
+                (click)="selectPokemon(pokemon.url)" label="meme page"></p-button>
+                <p-button
+                styleClass="p-button-raised p-button-text p-button-help p-button-rounded p-button-sm"
+                icon="pi pi-plus"
+                (click)="dialog(pokemon.url)" label="DialobBox"></p-button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+  <div class="detail">
+    <app-pokedetail2 *ngIf="selectedPokemon" [url]="selectedPokemon"></app-pokedetail2>
+  </div>
+</div>

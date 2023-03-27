@@ -1,0 +1,13 @@
+<p-card *ngIf="currentPokemon" [header]="currentPokemon.name | titlecase">
+  <p>
+    Poids : {{currentPokemon.weight}}
+  </p>
+  <p>
+    Taille : {{currentPokemon.height}}
+  </p>
+  <p-card>
+    <img [src]="currentPokemon.sprites.front_default">
+    <img [src]="currentPokemon.sprites.back_default">
+  </p-card>
+  <img [src]="currentPokemon.sprites.other['official-artwork'].front_default" width="200px">
+</p-card>
